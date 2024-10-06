@@ -21,10 +21,10 @@ export default function ProjectCard({
       className="dark:border-dark-secondary border-deep-sea group relative h-36 w-[280px] cursor-pointer overflow-hidden  rounded-lg border-2 object-cover shadow-button-card sm:w-[360px] lg:h-44"
     >
       <Image
-        src={`https://drive.google.com/thumbnail?id=${image}&sz=w3000&w=2048&q=75`}
+        src={`https://drive.google.com/thumbnail?id=${image}&sz=w3000`}
         width={1000}
         height={1000}
-        priority={false} 
+        priority={true} 
         className="h-full w-full object-cover"
         alt="foto"
       />
