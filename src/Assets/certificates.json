@@ -1,0 +1,21 @@
+[
+    {
+      "position": true,
+      "type": "Certification",
+      "company": "Coursera",
+      "title": "Full-Stack Web Development",
+      "date": "2022-08-10",
+      "description": "A comprehensive certification covering both front-end and back-end web development.",
+      "url": "https://coursera.org/certificate/fullstack"
+    },
+    {
+      "position": true,
+      "type": "Diploma",
+      "company": "Udemy",
+      "title": "Mobile App Development",
+      "date": "2023-01-05",
+      "description": "Learned to build cross-platform mobile applications using Flutter.",
+      "url": "https://udemy.com/certificate/mobile-app-development"
+    }
+  ]
+  
