@@ -1,82 +1,141 @@
+'use client'
+
+import ProjectCard from '@/components/common/ProjectCard'
 import TextSection from '@/components/common/TextSection'
 
-export default function Resume() {
+import { useState, useEffect } from 'react'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { GithubStats } from '@/components/common/GithubStats'
+import projectsData from '@/Assets/projects.json' // Import local JSON file
+import { IProject } from '@/utils/interface/Project' // Import your project interface
+
+export default function Project() {
+  const [filter, setFilter] = useState('all')
+  const [data, setData] = useState<IProject[]>([]) // Specify the type as IProject[]
+  const [isLoading, setIsLoading] = useState(true) // Loading state
+  const [error, setError] = useState<null | Error>(null) // Error state
+
+  // Simulating data fetching
+  useEffect(() => {
+    const fetchData = () => {
+      try {
+        setData(projectsData as unknown as IProject[]) // Cast the imported data to IProject[]
+        setIsLoading(false) // Set loading to false
+      } catch (err) {
+        setError(err as Error) // Set error if there's an issue
+        setIsLoading(false) // Set loading to false
+      }
+    }
+
+    fetchData() // Call the fetch function
+  }, [])
+
   return (
-    <div className="flex flex-col items-center justify-center">
-      <TextSection icon="📄" text="it's My Resume." />
-      <div className="mt-5 flex w-full flex-col items-end md:mt-10 xl:w-[810px]">
-        <div className="flex gap-3">
-          <a
-            href="/CV_Syah.pdf"
-            download
-            className="bg-midnight border-deep-sea text-deep-sea shadow-deep-sea hover:bg-frost-light flex cursor-pointer items-center gap-2 rounded-xl border-2 p-1 shadow-button md:p-4"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24em"
-              height="24em"
-              viewBox="0 0 24 24"
-              className="h-8 w-8"
-            >
-              <g
-                fill="none"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-              >
-                <path strokeDasharray={14} strokeDashoffset={14} d="M6 19h12">
-                  <animate
-                    fill="freeze"
-                    attributeName="stroke-dashoffset"
-                    begin="0.5s"
-                    dur="0.4s"
-                    values="14;0"
-                  ></animate>
-                </path>
-                <path
-                  strokeDasharray={18}
-                  strokeDashoffset={18}
-                  d="M12 4 h2 v6 h2.5 L12 14.5M12 4 h-2 v6 h-2.5 L12 14.5"
-                >
-                  <animate
-                    fill="freeze"
-                    attributeName="stroke-dashoffset"
-                    dur="0.4s"
-                    values="18;0"
-                  ></animate>
-                  <animate
-                    attributeName="d"
-                    calcMode="linear"
-                    dur="1.5s"
-                    keyTimes="0;0.7;1"
-                    repeatCount="indefinite"
-                    values="M12 4 h2 v6 h2.5 L12 14.5M12 4 h-2 v6 h-2.5 L12 14.5;M12 4 h2 v3 h2.5 L12 11.5M12 4 h-2 v3 h-2.5 L12 11.5;M12 4 h2 v6 h2.5 L12 14.5M12 4 h-2 v6 h-2.5 L12 14.5"
-                  ></animate>
-                </path>
-              </g>
-            </svg>
-            <p className="text-xs font-semibold sm:text-sm md:text-lg">
-              download
-            </p>
-          </a>
-          <a
-            href="/cv_Syah.pdf"
-            className="hover:bg-frost-light border-deep-sea shadow-deep-sea flex cursor-pointer items-center gap-2 rounded-xl border-2 bg-white p-1 shadow-button md:p-4"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 640 512"
-              className="m-1 h-6 w-6 md:m-0 md:h-8 md:w-8"
-            >
-              <path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z" />
-            </svg>
-          </a>
+    <div>
+      <TextSection icon="" text="it's My Projects." />
+      <div>
+        <div className="my-10 hidden justify-center md:flex">
+          <GithubStats />
         </div>
-        <iframe
-          src="/cv_Syah.pdf#toolbar=0"
-          className="mt-4 h-[800px] w-full overflow-hidden xl:h-[1135px]"
-        />
+        <div className="my-4 flex justify-center gap-4 font-semibold text-storm-text dark:text-frost-light sm:gap-6 md:gap-8 lg:gap-4">
+          <button
+            className={`group relative flex cursor-pointer flex-col items-start justify-center`}
+            onClick={() => setFilter('all')}
+          >
+            <span
+              className={`absolute bottom-0 h-1 ${
+                filter === 'all' ? 'w-full' : 'w-0'
+              } rounded-md bg-deep-sea transition-all duration-300 ease-in-out group-hover:w-full`}
+            ></span>
+            <p>
+              All{' '}
+              {!isLoading && !error && filter === 'all' && `(${data.length})`}
+            </p>
+          </button>
+          <button
+            className={`group relative flex cursor-pointer flex-col items-start justify-center`}
+            onClick={() => setFilter('web')}
+          >
+            <span
+              className={`absolute bottom-0 h-1 ${
+                filter === 'web' ? 'w-full' : 'w-0'
+              } rounded-md bg-deep-sea transition-all duration-300 ease-in-out group-hover:w-full`}
+            ></span>
+            <p>
+              Web{' '}
+              {!isLoading &&
+                !error &&
+                filter === 'web' &&
+                `(${data.filter((item) => item.type === 'web').length})`}
+            </p>
+          </button>
+          <button
+            className={`group relative flex cursor-pointer flex-col items-start justify-center`}
+            onClick={() => setFilter('mobile')}
+          >
+            <span
+              className={`absolute bottom-0 h-1 ${
+                filter === 'mobile' ? 'w-full' : 'w-0'
+              } rounded-md bg-deep-sea transition-all duration-300 ease-in-out group-hover:w-full`}
+            ></span>
+            <p>
+              Mobile{' '}
+              {filter === 'mobile' &&
+                `(${
+                  data.filter((item) =>
+                    ['android', 'ios', 'flutter', 'mobile'].includes(item.type),
+                  ).length
+                })`}
+            </p>
+          </button>
+          <button
+            className={`group relative flex cursor-pointer flex-col items-start justify-center`}
+            onClick={() => setFilter('api')}
+          >
+            <span
+              className={`absolute bottom-0 h-1 ${
+                filter === 'api' ? 'w-full' : 'w-0'
+              } rounded-md bg-deep-sea transition-all duration-300 ease-in-out group-hover:w-full`}
+            ></span>
+            <p>
+              Api{' '}
+              {!isLoading &&
+                !error &&
+                filter === 'api' &&
+                `(${data.filter((item) => item.type === 'api').length})`}
+            </p>
+          </button>
+        </div>
+      </div>
+      <div className="mb-2 mt-6 flex w-full flex-wrap justify-center gap-4 sm:mb-4 md:mb-5 lg:mb-6 lg:gap-6">
+        {!isLoading &&
+          !error &&
+          data
+            .slice(0)
+            .reverse()
+            .filter((item) => {
+              if (filter === 'all') return true
+              if (filter === 'mobile')
+                return ['android', 'ios', 'flutter', 'mobile'].includes(
+                  item.type,
+                )
+              if (filter === 'web') return item.type === 'web'
+              if (filter === 'api') return item.type === 'api'
+              return item.type === filter
+            })
+            .map((item, index) => <ProjectCard {...item} key={index} />)}
+        {isLoading && (
+          <div className="flex w-3/4 flex-row items-center justify-center">
+            <Skeleton
+              height={160}
+              width={320}
+              count={12}
+              containerClassName="flex gap-2 flex-row items-center justify-center w-full flex-wrap"
+            />
+          </div>
+        )}
+        {error && <p className="text-center">Error ...</p>}
       </div>
     </div>
   )
