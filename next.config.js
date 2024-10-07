@@ -6,11 +6,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'drive.google.com',
         port: '',
-        pathname: '/thumbnail',
+        pathname: '/thumbnail/**', // Ensure wildcard to match URLs
       },
       {
         protocol: 'https',
-        hostname: '"api.microlink.io"',
+        hostname: 'api.microlink.io', // Remove extra quotes
         port: '',
         pathname: '/',
       },
