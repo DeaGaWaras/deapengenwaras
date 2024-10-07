@@ -24,7 +24,7 @@ export default function ProjectCard({
         src={`https://drive.google.com/uc?export=view&id=${image}`}
         width={1000}
         height={1000}
-        priority={false}
+        priority={true}
         className="h-full w-full object-cover"
         alt="foto"
       />
