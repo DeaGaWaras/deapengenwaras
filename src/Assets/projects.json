@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "1dToNePne4dzixvv5tqcapmO8QQbkWYIa",
+    "image": "/images/portfolio-website.png",
     "title": "My Portfolio Website",
     "description": "A personal portfolio website built using React and Tailwind CSS.",
     "repo": "https://github.com",
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "image": "1iaiib-0dCHRin0eEHn_hPpbGhJH68rAA",
+    "image": "/images/shopping-app.png",
     "title": "Mobile Shopping App",
     "description": "A cross-platform mobile shopping app built using Flutter.",
     "repo": "https://github.com",
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "image": "1_SYSZ2pGuFVL5akfOiY1RyGhCcWnm9_F",
+    "image": "/images/ai-api.png",
     "title": "AI REST API (BOT)",
     "description": "A RESTful API for an AI platform, built with Node.js and Express.",
     "repo": "https://github.com",
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "image": "1XiDZ8a7feeFvgQz1SdBq82ublDL6WqPB",
+    "image": "/images/portfolio-class.png",
     "title": "Portofolio Class",
     "description": "A Class portfolio website built using Vue and Tailwind CSS.",
     "repo": "https://github.com",
@@ -37,7 +37,7 @@
   },
   {
     "id": 5,
-    "image": "11lwUb1VxXCg58IMTMNnkhL26nCoEgwxA",
+    "image": "/images/whatsapp-bot.png",
     "title": "Artificial Intelligence (AI) Whatsapp",
     "description": "Whatsapp bot created using Javascript and Baileys Library.",
     "repo": "https://github.com",
