@@ -4,13 +4,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'drive.google.com',
+        hostname: 'drive.google.com', // Allow images from Google Drive
         port: '',
-        pathname: '/thumbnail/**', // Ensure wildcard to match URLs
+        pathname: '/uc', // Update the pathname to match the 'uc' URL structure
       },
       {
         protocol: 'https',
-        hostname: 'api.microlink.io', // Remove extra quotes
+        hostname: 'api.microlink.io', // Allow images from Microlink API
         port: '',
         pathname: '/',
       },
